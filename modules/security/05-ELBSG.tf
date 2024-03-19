@@ -27,12 +27,15 @@ resource "aws_security_group" "elb" {
   egress {
     from_port       = 0
     to_port         = 0
-    protocol        = "-1"                                    # for all protocols
+    protocol        = "-1" # for all protocols
     security_groups = ["${aws_security_group.kubemaster.id}"]
   }
   tags {
-    KubernetesCluster = "${ var.name }"
-    Name              = "ELB-k8s-${ var.name }"
+    KubernetesCluster = "${var.name}"
+    Name              = "ELB-k8s-${var.name}"
     builtWith         = "terraform"
+  }
+  tags = {
+    yor_trace = "52b721b1-abba-4f4d-b74d-b3e8804b592f"
   }
 }

@@ -29,12 +29,15 @@ resource "aws_security_group" "bastion" {
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"          # for all protocols
+    protocol    = "-1" # for all protocols
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags {
-    KubernetesCluster = "${ var.name }"
-    Name              = "Bastion-k8s-${ var.name }"
+    KubernetesCluster = "${var.name}"
+    Name              = "Bastion-k8s-${var.name}"
     builtWith         = "terraform"
+  }
+  tags = {
+    yor_trace = "968f8d7c-c6dc-45b2-a81d-05c099a4db66"
   }
 }

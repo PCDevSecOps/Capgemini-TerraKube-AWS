@@ -15,6 +15,9 @@ resource "aws_network_interface" "etcd_eni_az1" {
     Role    = "etcd-eni"
     Service = "etcd"
   }
+  tags = {
+    yor_trace = "db898c43-0e31-4ec8-a31f-5a287786ee79"
+  }
 }
 
 ## Etcd ENI Interfaces
@@ -34,6 +37,9 @@ resource "aws_network_interface" "etcd_eni_az2" {
     Role    = "etcd-eni"
     Service = "etcd"
   }
+  tags = {
+    yor_trace = "e7e31edb-b62b-445e-b57d-74029ae50711"
+  }
 }
 
 ## Etcd ENI Interfaces
@@ -52,5 +58,8 @@ resource "aws_network_interface" "etcd_eni_az3" {
     AZ      = "${var.az3}"
     Role    = "etcd-eni"
     Service = "etcd"
+  }
+  tags = {
+    yor_trace = "8c8601a9-fc2a-41cf-8a37-571bb3ec8003"
   }
 }

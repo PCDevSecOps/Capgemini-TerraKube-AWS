@@ -8,7 +8,10 @@ resource "aws_subnet" "public1" {
 
   tags {
     Name              = "Terrakube public subnet ${lookup(var.subnetaz1, var.adminregion)}"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+  }
+  tags = {
+    yor_trace = "37d775b7-1e8e-49bc-9d7e-c1e0d33f67a8"
   }
 }
 
@@ -20,7 +23,10 @@ resource "aws_subnet" "public2" {
 
   tags {
     Name              = "Terrakube public subnet ${lookup(var.subnetaz2, var.adminregion)}"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+  }
+  tags = {
+    yor_trace = "500d5213-3308-4e0a-af8b-d9ad58ff30e3"
   }
 }
 
@@ -32,7 +38,10 @@ resource "aws_subnet" "public3" {
 
   tags {
     Name              = "Terrakube public subnet ${lookup(var.subnetaz3, var.adminregion)}"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+  }
+  tags = {
+    yor_trace = "0faf196f-9299-4a4d-8e6a-02c5ec58512e"
   }
 }
 
@@ -45,7 +54,8 @@ resource "aws_subnet" "private1" {
 
   tags = {
     Name              = "Terraform private subnet ${lookup(var.subnetaz1, var.adminregion)}"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+    yor_trace         = "992b4202-afe6-416a-8c99-49ebcfc87096"
   }
 }
 
@@ -56,7 +66,8 @@ resource "aws_subnet" "private2" {
 
   tags = {
     Name              = "Terraform private subnet ${lookup(var.subnetaz2, var.adminregion)}"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+    yor_trace         = "e768211e-fb4a-4d35-8926-5779ade406a3"
   }
 }
 
@@ -67,7 +78,8 @@ resource "aws_subnet" "private3" {
 
   tags = {
     Name              = "Terraform private subnet ${lookup(var.subnetaz3, var.adminregion)}"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+    yor_trace         = "5d7bc2d2-d17b-48ea-aa7c-7b941fea552d"
   }
 }
 
