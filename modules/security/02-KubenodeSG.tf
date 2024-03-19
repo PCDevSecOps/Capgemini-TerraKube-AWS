@@ -23,12 +23,15 @@ resource "aws_security_group" "kubenode" {
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"          # for all protocols
+    protocol    = "-1" # for all protocols
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags {
-    KubernetesCluster = "${ var.name }"
-    Name              = "Kubenode-k8s-${ var.name }"
+    KubernetesCluster = "${var.name}"
+    Name              = "Kubenode-k8s-${var.name}"
     builtWith         = "terraform"
+  }
+  tags = {
+    yor_trace = "d8b572be-3c61-443c-af14-c77577df7564"
   }
 }

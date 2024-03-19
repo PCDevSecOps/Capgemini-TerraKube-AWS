@@ -4,6 +4,9 @@ resource "aws_s3_bucket_object" "kube-apiserver" {
   key        = "Manifests/kube-apiserver.yml"
   content    = "${data.template_file.kube-apiserver.rendered}"
   kms_key_id = "${aws_kms_key.kubekms.arn}"
+  tags = {
+    yor_trace = "660843d2-ee93-4ad7-b28e-eee2718c11da"
+  }
 }
 
 resource "aws_s3_bucket_object" "kube-controllermanager" {
@@ -12,6 +15,9 @@ resource "aws_s3_bucket_object" "kube-controllermanager" {
   key        = "Manifests/kube-controller-manager.yml"
   content    = "${data.template_file.kube-controllermanager.rendered}"
   kms_key_id = "${aws_kms_key.kubekms.arn}"
+  tags = {
+    yor_trace = "ba696e5f-fedb-416f-b02a-04d4929a77aa"
+  }
 }
 
 resource "aws_s3_bucket_object" "kube-proxy" {
@@ -20,6 +26,9 @@ resource "aws_s3_bucket_object" "kube-proxy" {
   key        = "Manifests/kube-proxy.yml"
   content    = "${data.template_file.kube-proxy.rendered}"
   kms_key_id = "${aws_kms_key.kubekms.arn}"
+  tags = {
+    yor_trace = "44b3a7eb-edb5-4fed-ba7c-35af4141eb07"
+  }
 }
 
 resource "aws_s3_bucket_object" "kube-scheduler" {
@@ -28,6 +37,9 @@ resource "aws_s3_bucket_object" "kube-scheduler" {
   key        = "Manifests/kube-scheduler.yml"
   content    = "${data.template_file.kube-scheduler.rendered}"
   kms_key_id = "${aws_kms_key.kubekms.arn}"
+  tags = {
+    yor_trace = "85a7cfe8-b41d-4533-8267-f0142ce8763c"
+  }
 }
 
 data "template_file" "kube-apiserver" {
@@ -35,14 +47,14 @@ data "template_file" "kube-apiserver" {
 
   vars {
     kubernetes_image         = "${var.kubernetes_image}"
-    etcd_memberlist          = "${join(",", concat(formatlist("%s=https://%s:2380", keys(var.etcd_nodes_az1), values(var.etcd_nodes_az1)), formatlist("%s=https://%s:2380", keys(var.etcd_nodes_az2), values(var.etcd_nodes_az2)), formatlist("%s=https://%s:2380", keys(var.etcd_nodes_az3), values(var.etcd_nodes_az3)) ))}"
+    etcd_memberlist          = "${join(",", concat(formatlist("%s=https://%s:2380", keys(var.etcd_nodes_az1), values(var.etcd_nodes_az1)), formatlist("%s=https://%s:2380", keys(var.etcd_nodes_az2), values(var.etcd_nodes_az2)), formatlist("%s=https://%s:2380", keys(var.etcd_nodes_az3), values(var.etcd_nodes_az3))))}"
     service-cluster-ip-range = "${var.service-cluster-ip-range}"
     mastercertobject         = "${var.masterpem}"
     masterkeyobject          = "${var.masterkey}"
     cacertobject             = "${var.capem}"
     etcdcertobject           = "${var.etcdpem}"
     etcdkeyobject            = "${var.etcdkey}"
-    apiservercount           = "${var.etcd_asg_maxsize_az1 + var.etcd_asg_maxsize_az2 + var.etcd_asg_maxsize_az3 }"
+    apiservercount           = "${var.etcd_asg_maxsize_az1 + var.etcd_asg_maxsize_az2 + var.etcd_asg_maxsize_az3}"
   }
 }
 

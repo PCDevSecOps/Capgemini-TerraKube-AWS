@@ -23,12 +23,15 @@ resource "aws_security_group" "kubemaster" {
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"          # for all protocols
+    protocol    = "-1" # for all protocols
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags {
-    KubernetesCluster = "${ var.name }"
-    Name              = "Master-k8s-${ var.name }"
+    KubernetesCluster = "${var.name}"
+    Name              = "Master-k8s-${var.name}"
     builtWith         = "terraform"
+  }
+  tags = {
+    yor_trace = "973a126a-4570-4c44-8967-d1b2cad25c27"
   }
 }

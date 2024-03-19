@@ -4,7 +4,10 @@ resource "aws_route_table" "public1_route_table" {
 
   tags {
     Name              = "TerraKube Public1 route table"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+  }
+  tags = {
+    yor_trace = "3d3a7a53-6ff5-4df6-a436-0d76429c895d"
   }
 }
 
@@ -13,7 +16,10 @@ resource "aws_route_table" "public2_route_table" {
 
   tags {
     Name              = "TerraKube Public2 route table"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+  }
+  tags = {
+    yor_trace = "f8a489a1-df5b-40cb-b4f2-41388ca5955a"
   }
 }
 
@@ -22,7 +28,10 @@ resource "aws_route_table" "public3_route_table" {
 
   tags {
     Name              = "TerraKube Public3 route table"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+  }
+  tags = {
+    yor_trace = "2f1e123c-4dba-4ebc-850f-2b1bd9c9d66a"
   }
 }
 
@@ -51,7 +60,10 @@ resource "aws_route_table" "private1_route_table" {
 
   tags {
     Name              = "TerraKube Private1 route table"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+  }
+  tags = {
+    yor_trace = "9d89ab59-0996-4f42-a71d-54b6fce1dd21"
   }
 }
 
@@ -60,7 +72,10 @@ resource "aws_route_table" "private2_route_table" {
 
   tags {
     Name              = "TerraKube Private2 route table"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+  }
+  tags = {
+    yor_trace = "daea470c-aa56-49a3-8e98-48775999fc18"
   }
 }
 
@@ -69,7 +84,10 @@ resource "aws_route_table" "private3_route_table" {
 
   tags {
     Name              = "TerraKube Private3 route table"
-    KubernetesCluster = "${ var.name }"
+    KubernetesCluster = "${var.name}"
+  }
+  tags = {
+    yor_trace = "3a67e5b2-8dc6-4ebd-87d8-c50ebdba1c4c"
   }
 }
 
